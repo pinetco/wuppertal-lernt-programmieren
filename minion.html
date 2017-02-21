@@ -1,0 +1,63 @@
+<!doctype  html>
+<style>
+[v-cloak] {
+  display: none;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+<div id="app">
+
+	<div v-cloak>
+		<spiel inline-template>
+			<div>
+
+                        <ol>
+                          <li v-for="tier in tiere">
+                            {{ tier }}
+                          </li>
+                        </ol>
+
+
+                        <button class="btn btn-primary" @click="mehr">Knopf</button>
+				<h1 v-if="zahl">Hallo {{ zahl }}</h1>
+                          <input type="text" v-model="zahl">
+
+				<div v-if="zahl == 10">
+					<img src="bilder/minion.gif" alt="">
+				</div>
+			</div>
+		</spiel>
+	</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
+<script>
+Vue.component('spiel', {
+    props: [],
+    data: function() {
+        return {
+            tiere: [
+                  'Esel',
+                  'Hund',
+            ]
+        }
+    },
+    mounted: function() {
+    	this.spielStarten();
+    },
+    methods: {
+        spielStarten: function () {
+        },
+        mehr: function () {
+          this.zahl = this.zahl *1 +1;
+        }
+    },
+});
+
+new Vue({
+    el: '#app'
+});
+
+Vue.config.devtools = true;
+</script>
